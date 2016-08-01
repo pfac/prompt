@@ -39,10 +39,9 @@ fn main() {
 
         println!("We're in {}", branch_name);
     } else {
-        if let Some(name) = head.name() {
-            println!("Not a branch, we're in {}", name);
-        } else if let Some(hash) = head.shorthand() {
-            println!("Not a branch, we're in {}", hash);
+        if let Some(oid) = head.target() {
+            let hash = oid.to_string();
+            println!("Not a branch, we're in {}", &hash[..7]);
         } else {
             println!("Current branch has no name or reference.");
         }
