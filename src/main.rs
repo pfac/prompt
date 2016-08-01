@@ -1,7 +1,7 @@
 extern crate git2;
 
 use std::env;
-use git2::Repository;
+use git2::{Branch, Repository};
 
 fn main() {
     let current_path_buffer = match env::current_dir() {
@@ -29,8 +29,22 @@ fn main() {
     };
 
     if head.is_branch() {
-        println!("Yap, it's a branch");
+        let branch = Branch::wrap(head);
+
+        let branch_name = match branch.name() {
+            Ok(Some(name)) => name,
+            Ok(None) => "",
+            Err(e) => panic!("Failed to get branch name: {}", e),
+        };
+
+        println!("We're in {}", branch_name);
     } else {
-        println!("Nope. That's weird");
+        if let Some(name) = head.name() {
+            println!("Not a branch, we're in {}", name);
+        } else if let Some(hash) = head.shorthand() {
+            println!("Not a branch, we're in {}", hash);
+        } else {
+            println!("Current branch has no name or reference.");
+        }
     }
 }
