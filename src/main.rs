@@ -10,7 +10,7 @@ fn main() {
     };
     let repo = match Repository::open(current_path_buffer) {
         Ok(repo) => repo,
-        Err(e) => panic!("Failed to open repository: {}", e),
+        Err(_) => return,
     };
 
     match repo.is_empty() {
