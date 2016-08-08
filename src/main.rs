@@ -16,7 +16,7 @@ fn main() {
     match repo.is_empty() {
         Ok(is_empty) => {
             if is_empty {
-                println!("Nothing to see here");
+                // nothing to see here
                 return;
             }
         },
@@ -33,17 +33,17 @@ fn main() {
 
         let branch_name = match branch.name() {
             Ok(Some(name)) => name,
-            Ok(None) => "",
+            Ok(None) => panic!("Branch has no name"),
             Err(e) => panic!("Failed to get branch name: {}", e),
         };
 
-        println!("We're in {}", branch_name);
+        println!("[{}]", branch_name);
     } else {
         if let Some(oid) = head.target() {
             let hash = oid.to_string();
-            println!("Not a branch, we're in {}", &hash[..7]);
+            println!("[{}]", &hash[..7]);
         } else {
-            println!("Current branch has no name or reference.");
+            panic!("Current branch has no name or reference");
         }
     }
 }
