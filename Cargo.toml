@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Pedro Costa <pedro@subvisual.co>"]
 
 [dependencies]
-git2 = "0.3"
+git2 = "0.7"
