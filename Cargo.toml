@@ -1,7 +1,7 @@
 [package]
-name = "zsh-git-prompt-rs"
-version = "0.1.0"
-authors = ["Pedro Costa <pedro@subvisual.co>"]
+name = "my-git-prompt"
+version = "0.1.1"
+authors = ["Pedro Costa <dev@iampfac.com>"]
 
 [dependencies]
 git2 = "0.7"
