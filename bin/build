@@ -1,0 +1,23 @@
+#!/bin/sh
+# Build this project.
+
+CARGO_BUILD_RELEASE=''
+
+# Parse options
+while getopts 'r' OPTION; do
+  case "$OPTION" in
+    r)
+      CARGO_BUILD_RELEASE='release'
+      ;;
+    \?)
+      echo "Unsupporte option -$option" >&2
+      exit 1
+  esac
+done
+
+# Build the project
+if [ "$CARGO_BUILD_RELEASE" ]; then
+  cargo build --release
+else
+  cargo build
+fi
