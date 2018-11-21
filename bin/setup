@@ -1,0 +1,17 @@
+#!/bin/sh
+# Setup the current system to be able to build and work on this project.
+
+# Check if ASDF VM is available
+if ! command -v asdf >/dev/null; then
+  cat <<EOS
+asdf not found
+
+This project uses ASDF VM (https://github.com/asdf-vm/asdf) for version management.
+
+Please install it before proceeding.
+EOS
+  exit 1
+fi
+
+# Install correct languages versions with ASDF VM
+asdf install
