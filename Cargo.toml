@@ -1,7 +1,7 @@
 [package]
-name = "my-git-prompt"
-version = "0.1.1"
-authors = ["Pedro Costa <dev@iampfac.com>"]
+name = "prompt"
+version = "0.2.0"
+authors = ["Pedro Costa <pfac@users.noreply.github.com>"]
 
 [dependencies]
 git2 = "0.17"
